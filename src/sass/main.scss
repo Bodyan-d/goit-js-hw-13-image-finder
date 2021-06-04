@@ -1,7 +1,23 @@
-/*
- * Главный файл стилей.
- * Все паршалы подключаются сюда.
- */
+body {
+    padding-top: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-// Стили для файла с примером HTML-фрагмента
-@import './example';
+.search-form {
+    display: flex;
+    width: auto;
+    height: auto;
+    margin-bottom: 20px;
+    justify-content: center;
+    align-content: center;
+    &-input {
+        width: 800px;
+        height: 50px;
+        font-size: large;
+        padding: 5px;
+        padding: 10px;
+    }
+}
