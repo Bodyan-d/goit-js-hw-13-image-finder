@@ -6,6 +6,14 @@ body {
     align-items: center;
 }
 
+.gallery {
+    padding: 0;
+    width: 1280px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .search-form {
     display: flex;
     width: auto;
@@ -20,4 +28,48 @@ body {
         padding: 5px;
         padding: 10px;
     }
+}
+
+.photo-card {
+    height: auto;
+    width: calc((100% - 50px) / 2);
+    margin-bottom: 50px;
+    margin-right: 50px;
+}
+
+.photo-card:not(:last-child) {
+    margin-bottom: 50px;
+}
+
+.photo-card:nth-last-child(-n + 2) {
+    margin-bottom: 0px;
+}
+
+.photo-card:nth-child(2n) {
+    margin-right: 0px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    &-item {
+        margin-right: 20px;
+    }
+}
+
+.load-more-btn {
+    padding: 10px 30px;
+    outline: none;
+    font-size: large;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    overflow: hidden;
 }
