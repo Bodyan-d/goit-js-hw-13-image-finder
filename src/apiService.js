@@ -1,13 +1,28 @@
 const PIXABAY_KEY = '21922241-ac53faccd58a6508b64890669';
 
+let page = 1;
 export default async function fetchImages(searchQuery) {
+    const searchQueryNow = searchQuery;
+
+
     if (searchQuery) {
         try {
-            const response = await fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchQuery}&page=1&per_page=12&key=${PIXABAY_KEY}`);
+            const response = await fetch(`https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${searchQueryNow}&page=${page}&per_page=12&key=${PIXABAY_KEY}`);
             const users = response.json();
+            incrementPage();
 
+            console.log(page);
             return users;
         } catch (err) { console.error(err); };
 
     }
+
+};
+
+function incrementPage() {
+    page += 1;
+};
+
+function resetPage() {
+    page = 1;
 };

@@ -4,24 +4,38 @@ import cardImagesTpl from './templates/cardImage.hbs'
 
 const galleryRef = document.querySelector('.gallery-js');
 const searchRef = document.querySelector('.search-form-input');
+const loadMoreBtnRef = document.querySelector('.load-more-btn');
+
 
 searchRef.addEventListener('input', onInput);
 
+loadMoreBtnRef.addEventListener('click', onLoadMoreClick);
+
+let imageToSearch = NaN;
+
 function onInput(e) {
 
-    const images = e.target.value;
-    if (!images.trim()) {
+    imageToSearch = e.target.value;
+    if (!imageToSearch.trim()) {
         return;
     }
 
+    galleryRef.innerHTML = "";
+    fetchingImages(imageToSearch);
+}
+
+function fetchingImages(images) {
     fetchImages(images).then(r => {
-        galleryRef.innerHTML = "";
         addMurkup(r);
     });
-}
+};
 
 function addMurkup(images) {
     const imagesMurkup = cardImagesTpl(images);
 
     galleryRef.insertAdjacentHTML('beforeend', imagesMurkup);
+};
+
+function onLoadMoreClick(e) {
+    fetchingImages(imageToSearch);
 };
