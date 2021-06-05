@@ -1,5 +1,5 @@
 import './sass/main.scss';
-import fetchImages from './apiService';
+import { fetchImages, resetPage } from './apiService';
 import cardImagesTpl from './templates/cardImage.hbs'
 
 const galleryRef = document.querySelector('.gallery-js');
@@ -20,6 +20,7 @@ function onInput(e) {
         return;
     }
 
+    resetPage()
     galleryRef.innerHTML = "";
     fetchingImages(imageToSearch);
 }
