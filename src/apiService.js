@@ -1,5 +1,4 @@
 const PIXABAY_KEY = '21922241-ac53faccd58a6508b64890669';
-
 let page = 1;
 export async function fetchImages(searchQuery) {
     const searchQueryNow = searchQuery;
