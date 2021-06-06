@@ -26,7 +26,9 @@ function onInput(e) {
     }
 
     console.log(loadMoreBtnRef.classList.remove('visually-hidden'));
+
     resetPage();
+
     galleryRef.innerHTML = "";
     fetchingImages(imageToSearch);
 }
