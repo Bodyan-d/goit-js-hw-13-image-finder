@@ -7,9 +7,14 @@ const searchRef = document.querySelector('.search-form-input');
 const loadMoreBtnRef = document.querySelector('.load-more-btn');
 
 
-searchRef.addEventListener('input', onInput);
+
+const debounce = require('lodash.debounce');
+
+searchRef.addEventListener('input', debounce(onInput, 300));
 
 loadMoreBtnRef.addEventListener('click', onLoadMoreClick);
+loadMoreBtnRef.addEventListener('click', debounce(onClickToScroll, 1500));
+
 
 let imageToSearch = NaN;
 
@@ -20,7 +25,8 @@ function onInput(e) {
         return;
     }
 
-    resetPage()
+    console.log(loadMoreBtnRef.classList.remove('visually-hidden'));
+    resetPage();
     galleryRef.innerHTML = "";
     fetchingImages(imageToSearch);
 }
@@ -39,4 +45,12 @@ function addMurkup(images) {
 
 function onLoadMoreClick(e) {
     fetchingImages(imageToSearch);
+
 };
+
+function onClickToScroll(e) {
+    loadMoreBtnRef.scrollIntoView({
+        behavior: 'smooth',
+        block: 'end'
+    });
+}
